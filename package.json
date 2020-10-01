@@ -1,6 +1,6 @@
 {
   "name": "bulmaselect",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A fast Vanilla JavaScript multiselect library for the web.",
   "author": "resolv <resolvedxd@gmail.com> (https://github.com/resolvedxd)",
   "contributors": [
@@ -32,7 +32,7 @@
   "scripts": {
     "build": "terser --compress --mangle --output dist/bulmaselect.min.js src/index.js",
     "beautify": "beautify-proj -i . -o ../ -c .jsbeautifyrc -e ./node_modules",
-    "deploy": "npm run beautify && npm run lint && npm run build && npm version patch --force && npm publish",
+    "deploy": "npm run beautify && npm run lint && npm run build && git add dist/* && npm version patch --force && git push && npm publish",
     "lint": "eslint --fix .",
     "test": "eslint ."
   },
