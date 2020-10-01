@@ -18,8 +18,7 @@ Bulmaselect is a fast multiselect library for the web. While styled like [Bulma]
   <div id="ms"></div>
 </body>
 
-<!-- You should update your version manually as we may introduce breaking changes. -->
-<script src="https://cdn.jsdelivr.net/npm/bulmaselect@1.0.1/dist/bulmaselect.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bulmaselect@latest/dist/bulmaselect.min.js"></script>
 
 <script>
 
