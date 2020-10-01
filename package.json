@@ -1,0 +1,11 @@
+{
+  "name": "bulmaselect",
+  "version": "1.0.0",
+  "description": "multiselect thing",
+  "main": "multiselect.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "resolv",
+  "license": "MIT"
+}
