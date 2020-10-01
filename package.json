@@ -21,13 +21,9 @@
     "multi",
     "multiple",
     "multipleselect",
-    "multiple.select",
     "multiselect",
-    "multi.select",
     "multiselection",
-    "multi.selection",
-    "multiselections",
-    "multi.selections"
+    "multiselections"
   ],
   "scripts": {
     "build": "terser --compress --mangle --output dist/bulmaselect.min.js src/index.js",

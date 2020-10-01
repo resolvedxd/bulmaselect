@@ -5,7 +5,7 @@
 [![Version](https://img.shields.io/npm/v/bulmaselect?color=orange)][PACKAGE]
 
 ## About
-Bulmaselect is a fast multiselect library for the web. While styled like [Bulma][BULMA], it can work anywhere and has a variety of options to choose from.
+Bulmaselect is a fast multiselect library for the web written in vanilla JavaScript. While styled like [Bulma][BULMA], it can work anywhere and has a variety of options to choose from.
 
 ## Example
 
@@ -25,7 +25,7 @@ Bulmaselect is a fast multiselect library for the web. While styled like [Bulma]
 // Locale options used for strings
 const englishLocale = {
   btnNoSelection: "Nothing selected", // When no items are selected
-  searchPlaceholder: "Filter", // The placeholder text in the search bar
+  searchPlaceholder: "Search", // The placeholder text in the search bar
 }
 
 // List of options. These are the current defaults. Only specify what you want to differ from the default.

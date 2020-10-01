@@ -2,11 +2,11 @@
 
 const englishLocale = {
   btnNoSelection: "Nothing selected",
-  searchPlaceholder: "Filter",
+  searchPlaceholder: "Search",
 };
 
 const defaultStyle =
-  ".ms-ul{padding:0;margin:0;list-style-type:none}.ms-li{padding:none}#ms > div > ul > label{width:100%;display:block;cursor:pointer}.ms-button{background-color:#363636;color:#fff;border-color:transparent;cursor:pointer;border-width:1px;border-radius:4px;border-radius:4px;border-style:solid;height:2.5em;line-height:1.5;width:185px}.ms-drop{background-color:#363636;position:absolute;margin-top:-1px;border:1px solid #aaa;width:183px;max-height:249px;font-weight:400;border-style:solid;border-color:transparent;border-top-color:#000;border-radius:4px;color:#fff;max-height:250px;overflow:auto}.ms-group{font-weight:700}";
+  ".ms-textbox{width:270px;align-items:middle;justify-content:center;justify-self:center;text-align:center;display:block;margin-top:5px;margin-left:5px;margin-right:5px}.ms-ul{list-style-type:none;margin-left:5px!important;margin-top:3px!important;margin-bottom:3px}.ms-button{color:#fff;height:2.5em;line-height:1.5;width:300px;height:40px;text-align:left;font-size:1em;background-color:#fff;border-color:#dbdbdb;border-radius:4px;color:#363636;z-index:55}.ms-drop{background-color:#fff;position:absolute;color:#363636;width:300px;height:300px;max-width:300px;max-height:300px;overflow:auto!important;z-index:55}.select:after{z-index:0!important}.ms-group{font-weight:700}.ms-span{margin-left:5px}.ms-label{text-overflow:ellipsis!important;display:block}";
 
 // TODO: Implement themes and an auto theme with prefers-media-scheme or whatever it's called.
 /* const defaultLightStyle = "";
