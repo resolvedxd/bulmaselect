@@ -1,11 +1,44 @@
 {
   "name": "bulmaselect",
   "version": "1.0.0",
-  "description": "multiselect thing",
-  "main": "multiselect.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "A fast Vanilla JavaScript multiselect library for the web.",
+  "author": "resolv <resolvedxd@gmail.com> (https://github.com/resolvedxd)",
+  "contributors": [
+    "smolespi <espi@lesbian.codes> (https://lesbian.codes)"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/resolvedxd/bulmaselect",
+  "main": "dist/bulmaselect.min.js",
+  "bugs": {
+    "url": "https://github.com/resolvedxd/bulmaselect/issues"
   },
-  "author": "resolv",
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/resolvedxd/bulmaselect.git"
+  },
+  "keywords": [
+    "bulma",
+    "multi",
+    "multiple",
+    "multipleselect",
+    "multiple.select",
+    "multiselect",
+    "multi.select",
+    "multiselection",
+    "multi.selection",
+    "multiselections",
+    "multi.selections"
+  ],
+  "scripts": {
+    "build": "terser --compress --mangle --output dist/bulmaselect.min.js src/index.js",
+    "beautify": "beautify-proj -i . -o ../ -c .jsbeautifyrc -e ./node_modules",
+    "deploy": "npm run beautify && npm run lint && npm run build && npm version patch --force && npm publish",
+    "lint": "eslint --fix .",
+    "test": "eslint ."
+  },
+  "devDependencies": {
+    "beautify-proj": "^1.0.0",
+    "eslint": "^7.10.0",
+    "terser": "^5.3.3"
+  }
 }
