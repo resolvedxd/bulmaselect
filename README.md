@@ -32,6 +32,7 @@ const englishLocale = {
 const config = {
   isOpen: false, // Whether to open the dropdown by default. Defaults to false.
   keepOpen: false, // Whether to keep the dropdown open on clickoff. Defaults to false.
+  keepOpenClickoff: false, // Set this to true if you want to keep the menu open on clickoff
   injectStyle: true, // Whether to inject the default CSS. Defaults to true.
   btnMaxLabels: 3, // The max labels to show on the button before elipsing text. Defaults to 3.
   btnDelimiter: ",", // The delimiter (i.e ,) between labels on the button. Defaults to `, `.

@@ -5,8 +5,7 @@ const englishLocale = {
   searchPlaceholder: "Search",
 };
 
-const defaultStyle =
-  ".ms-textbox{width:270px;align-items:middle;justify-content:center;justify-self:center;text-align:center;display:block;margin-top:5px;margin-left:5px;margin-right:5px}.ms-ul{list-style-type:none;margin-left:5px!important;margin-top:3px!important;margin-bottom:3px}.ms-button{color:#fff;height:2.5em;line-height:1.5;width:300px;height:40px;text-align:left;font-size:1em;background-color:#fff;border-color:#dbdbdb;border-radius:4px;color:#363636;z-index:55}.ms-drop{background-color:#fff;position:absolute;color:#363636;width:300px;height:300px;max-width:300px;max-height:300px;overflow:auto!important;z-index:55}.select:after{z-index:0!important}.ms-group{font-weight:700}.ms-span{margin-left:5px}.ms-label{text-overflow:ellipsis!important;display:block}";
+const defaultStyle = ".ms-textbox{width:270px;align-items:middle;justify-content:center;justify-self:center;text-align:center;display:block;margin-top:5px;margin-left:5px;margin-right:5px}.ms-ul{list-style-type:none;margin-left:5px!important;margin-top:3px!important;margin-bottom:3px}.ms-button{color:#fff;height:2.5em;line-height:1.5;width:300px;height:40px;text-align:left;font-size:1em;background-color:#fff;border-color:#dbdbdb;border-radius:4px;color:#363636;z-index:55}.ms-drop{background-color:#fff;position:absolute;color:#363636;width:300px;height:300px;max-width:300px;max-height:300px;overflow:auto!important;z-index:55}.select:after{z-index:0!important}.ms-group{font-weight:700}.ms-span{margin-left:5px}.ms-group-label,.ms-label{display:block;text-overflow:ellipsis!important}";
 
 // TODO: Implement themes and an auto theme with prefers-media-scheme or whatever it's called.
 /* const defaultLightStyle = "";
@@ -17,6 +16,7 @@ const defaultConfig = {
   // TODO: Add theme: light, dark, or auto. Default to auto, which reads prefers-media-scheme. I'll do that later... CSS sucks.
   isOpen: false, // Whether to open the dropdown by default
   keepOpen: false, // Whether to keep the dropdown open on clickoff
+  keepOpenClickoff: false, // Set this to true if you want to keep the menu open on clickoff
   injectStyle: true, // Whether to inject the default CSS
   btnMaxLabels: 3, // The max labels to show on the button before elipsing text
   btnDelimiter: ",", // The delimiter (i.e ,) between labels on the button
@@ -76,6 +76,11 @@ class Bulmaselect {
     ul.classList = "ms-ul";
     parent.appendChild(uldiv);
 
+    // Handles the clickoff events
+    if (!config.keepOpenClickoff && !config.keepOpen) window.addEventListener("click", ev => {
+      if (ev.target !== uldiv && ev.target.parentNode !== uldiv && ev.target.parentNode.parentNode !== uldiv && ev.target.parentNode.parentNode.parentNode !== uldiv) uldiv.hidden = true;
+    });
+
     // Creates the search bar
     if (config.searchEnable) {
       const search = document.createElement("input");
@@ -93,7 +98,11 @@ class Bulmaselect {
     ul.addEventListener("click", s => this.updateButton());
 
     // Opens the button on click
-    button.addEventListener("click", () => config.keepOpen ? null : uldiv.hidden = !uldiv.hidden);
+    button.addEventListener("click", e => {
+      e.stopPropagation();
+      config.keepOpen ? null : uldiv.hidden = !uldiv.hidden;
+    });
+
     config.options.forEach((opt, i) => {
       // Creates the item labels and spans
       const label = document.createElement("label");
