@@ -1,10 +1,10 @@
 {
   "name": "bulmaselect",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "A fast Vanilla JavaScript multiselect library for the web.",
   "author": "resolv <resolvedxd@gmail.com> (https://github.com/resolvedxd)",
   "contributors": [
-    "smolespi <espi@lesbian.codes> (https://lesbian.codes)"
+    "smolespi <espi@riseup.net> (https://espi.me)"
   ],
   "license": "MIT",
   "homepage": "https://github.com/resolvedxd/bulmaselect",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "beautify-proj": "^1.0.0",
-    "eslint": "^7.10.0",
-    "terser": "^5.3.3"
+    "eslint": "^7.17.0",
+    "terser": "^5.5.1"
   }
 }
