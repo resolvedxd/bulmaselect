@@ -5,15 +5,11 @@ const englishLocale = {
   searchPlaceholder: "Search",
 };
 
-const defaultStyle = ".ms-textbox{width:270px;align-items:middle;justify-content:center;justify-self:center;text-align:center;display:block;margin-top:5px;margin-left:5px;margin-right:5px}.ms-ul{list-style-type:none;margin-left:5px!important;margin-top:3px!important;margin-bottom:3px}.ms-button{color:#fff;height:2.5em;line-height:1.5;width:300px;height:40px;text-align:left;font-size:1em;background-color:#fff;border-color:#dbdbdb;border-radius:4px;color:#363636;z-index:55}.ms-drop{background-color:#fff;position:absolute;color:#363636;width:300px;height:300px;max-width:300px;max-height:300px;overflow:auto!important;z-index:55}.select:after{z-index:0!important}.ms-group{font-weight:700}.ms-span{margin-left:5px}.ms-group-label,.ms-label{display:block;text-overflow:ellipsis!important}";
-
-// TODO: Implement themes and an auto theme with prefers-media-scheme or whatever it's called.
-/* const defaultLightStyle = "";
-const defaultDarkStyle = ""; */
+const defaultStyle =
+  ".ms-textbox{width:270px;align-items:middle;justify-content:center;justify-self:center;text-align:center;display:block;margin-top:5px;margin-left:5px;margin-right:5px}.ms-ul{list-style-type:none;margin-left:5px!important;margin-top:3px!important;margin-bottom:3px}.ms-button{color:#fff;height:2.5em;line-height:1.5;width:300px;height:40px;text-align:left;font-size:1em;background-color:#fff;border-color:#dbdbdb;border-radius:4px;color:#363636;z-index:55}.button{-moz-appearance:none;-webkit-appearance:none;align-items:center;border:1px solid transparent;border-radius:4px;box-shadow:none;display:inline-flex;font-size:1rem;height:2.5em;justify-content:flex-start;line-height:1.5;padding-bottom:calc(.5em - 1px);padding-left:calc(.75em - 1px);padding-right:calc(.75em - 1px);padding-top:calc(.5em - 1px);position:relative;vertical-align:top}.button:active,.button:focus,.is-active.button,.is-focused.button{outline:0}[disabled].button,fieldset[disabled] .button{cursor:not-allowed}.button{background-color:#fff;border-color:#dbdbdb;border-width:1px;color:#363636;cursor:pointer;justify-content:left;padding-bottom:calc(.5em - 1px);padding-left:1em;padding-right:1em;padding-top:calc(.5em - 1px);text-align:left;white-space:nowrap}.button strong{color:inherit}.button .icon,.button .icon.is-large,.button .icon.is-medium,.button .icon.is-small{height:1.5em;width:1.5em}.button .icon:first-child:not(:last-child){margin-left:calc(-.5em - 1px);margin-right:.25em}.button .icon:last-child:not(:first-child){margin-left:.25em;margin-right:calc(-.5em - 1px)}.button .icon:first-child:last-child{margin-left:calc(-.5em - 1px);margin-right:calc(-.5em - 1px)}.button.is-hovered,.button:hover{border-color:#b5b5b5;color:#363636}.button.is-active,.button.is-focused:not(:active),.button:active{border-color:#4a4a4a;color:#363636}.button[disabled],fieldset[disabled] .button{background-color:#fff;border-color:#dbdbdb;box-shadow:none;opacity:.5}.ms-drop{background-color:#fff;position:absolute;color:#363636;width:300px;height:300px;max-width:300px;max-height:300px;overflow:auto!important;z-index:55;border-color:#dbdbdb;border-radius:4px}#ms,.button{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.select:after{z-index:0!important}.ms-group{font-weight:700}.ms-span{margin-left:5px}.ms-group-label,.ms-label{display:block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}@media (prefers-color-scheme:dark){.ms-button{background-color:#050505;color:#c9c9c9}.ms-drop{background-color:#050505;color:#c9c9c9}.ms-label{background-color:#050505;color:#c9c9c9}.button{background-color:#050505;border-color:#4a4a4a}fieldset[disabled] .button{background-color:#050505;border-color:#4a4a4a}.ms-textbox{border:1px solid transparent;border-color:#dbdbdb;color:#c9c9c9;background-color:#050505;border-radius:1px}.button.is-hovered,.button:hover{border-color:#4a4a4a;color:#c9c9c9}.ms-textbox::placeholder{color:#dbdbdb}}";
 
 // The default configuration
 const defaultConfig = {
-  // TODO: Add theme: light, dark, or auto. Default to auto, which reads prefers-media-scheme. I'll do that later... CSS sucks.
   isOpen: false, // Whether to open the dropdown by default
   keepOpen: false, // Whether to keep the dropdown open on clickoff
   keepOpenClickoff: false, // Set this to true if you want to keep the menu open on clickoff
@@ -47,7 +43,9 @@ class Bulmaselect {
     config.options = config.options.map(opt => {
       if (typeof opt === "string") return { label: opt };
       else if (opt.type === "group") {
-        opt.children = opt.children.map(child => typeof child === "string" ? { label: child } : child);
+        opt.children = opt.children.map(child =>
+          typeof child === "string" ? { label: child } : child,
+        );
         return opt;
       } else {
         return opt;
@@ -64,7 +62,7 @@ class Bulmaselect {
 
     // Creates the button
     const button = document.createElement("button");
-    button.classList = "ms-button";
+    button.classList = "ms-button button select";
     button.innerText = config.label;
     parent.appendChild(button);
     // Creates the ul divs
@@ -77,9 +75,16 @@ class Bulmaselect {
     parent.appendChild(uldiv);
 
     // Handles the clickoff events
-    if (!config.keepOpenClickoff && !config.keepOpen) window.addEventListener("click", ev => {
-      if (ev.target !== uldiv && ev.target.parentNode !== uldiv && ev.target.parentNode.parentNode !== uldiv && ev.target.parentNode.parentNode.parentNode !== uldiv) uldiv.hidden = true;
-    });
+    if (!config.keepOpenClickoff && !config.keepOpen)
+      window.addEventListener("click", ev => {
+        if (
+          ev.target !== uldiv &&
+          ev.target.parentNode !== uldiv &&
+          ev.target.parentNode.parentNode !== uldiv &&
+          ev.target.parentNode.parentNode.parentNode !== uldiv
+        )
+          uldiv.hidden = true;
+      });
 
     // Creates the search bar
     if (config.searchEnable) {
@@ -100,7 +105,7 @@ class Bulmaselect {
     // Opens the button on click
     button.addEventListener("click", e => {
       e.stopPropagation();
-      config.keepOpen ? null : uldiv.hidden = !uldiv.hidden;
+      config.keepOpen ? null : (uldiv.hidden = !uldiv.hidden);
     });
 
     config.options.forEach((opt, i) => {
@@ -138,7 +143,8 @@ class Bulmaselect {
           Object.defineProperty(config.options[i].children[i_], "state", {
             get: () => checkbox.checked,
             set: s => {
-              if (typeof s !== "boolean") throw new Error("You can't set this property to a non-boolean");
+              if (typeof s !== "boolean")
+                throw new Error("You can't set this property to a non-boolean");
               checkbox.checked = s;
               this.updateButton();
             },
@@ -153,10 +159,12 @@ class Bulmaselect {
 
         // Gets option's state
         Object.defineProperty(config.options[i], "state", {
-          get: () => !config.options[i].children.map(c => c.state).includes(false),
+          get: () =>
+            !config.options[i].children.map(c => c.state).includes(false),
           set: s => {
-            if (typeof s !== "boolean") throw new Error("You can't set this property to a non-boolean");
-            config.options[i].children.forEach(c => c.state = s);
+            if (typeof s !== "boolean")
+              throw new Error("You can't set this property to a non-boolean");
+            config.options[i].children.forEach(c => (c.state = s));
             checkbox.checked = s;
             this.updateButton();
           },
@@ -173,7 +181,8 @@ class Bulmaselect {
         Object.defineProperty(config.options[i], "state", {
           get: () => checkbox.checked,
           set: s => {
-            if (typeof s !== "boolean") throw new Error("You can't set this property to a non-boolean");
+            if (typeof s !== "boolean")
+              throw new Error("You can't set this property to a non-boolean");
             checkbox.checked = s;
             this.updateButton();
           },
@@ -201,16 +210,25 @@ class Bulmaselect {
     const selected = [];
 
     // Maps the options and pushes them
-    this.options.map(c => Object.create(Object.getPrototypeOf(c), Object.getOwnPropertyDescriptors(c))).forEach(opt => {
-      if (opt.type === "group") {
-        const selectedChildren = [];
-        opt.children.forEach(child => child.state && selectedChildren.push(child));
-        if (selectedChildren.length) {
-          opt.children = selectedChildren;
-          selected.push(opt);
-        }
-      } else if (opt.state) selected.push(opt);
-    });
+    this.options
+      .map(c =>
+        Object.create(
+          Object.getPrototypeOf(c),
+          Object.getOwnPropertyDescriptors(c),
+        ),
+      )
+      .forEach(opt => {
+        if (opt.type === "group") {
+          const selectedChildren = [];
+          opt.children.forEach(
+            child => child.state && selectedChildren.push(child),
+          );
+          if (selectedChildren.length) {
+            opt.children = selectedChildren;
+            selected.push(opt);
+          }
+        } else if (opt.state) selected.push(opt);
+      });
 
     return selected;
   }
@@ -227,9 +245,15 @@ class Bulmaselect {
     });
 
     // Updates the innerText
-    if (!selected.length) this.button.innerText = this.config.locale.btnNoSelection;
-    else this.button.innerText =
-      `${selected.slice(0, this.config.btnMaxLabels).map(s => s.label).join(this.config.btnDelimiter)}${selected.length > this.config.btnMaxLabels ? "..." : ""}`;
+    if (!selected.length)
+      this.button.innerText = this.config.locale.btnNoSelection;
+    else
+      this.button.innerText = `${selected
+        .slice(0, this.config.btnMaxLabels)
+        .map(s => s.label)
+        .join(this.config.btnDelimiter)}${
+        selected.length > this.config.btnMaxLabels ? "..." : ""
+      }`;
   }
 
   // Updates selections
@@ -250,14 +274,14 @@ class Bulmaselect {
       if (o.type === "group") {
         o.children.forEach(c => {
           const hide = !c.label.toLowerCase().startsWith(val);
-          Array.from(c.el.children).forEach(c => c.hidden = hide);
+          Array.from(c.el.children).forEach(c => (c.hidden = hide));
           c.hidden = hide;
         });
         const hide = o.children.map(c => c.hidden).includes(false);
-        Array.from(o.el.children).forEach(c => c.hidden = !hide);
+        Array.from(o.el.children).forEach(c => (c.hidden = !hide));
       } else {
         const hide = !o.label.toLowerCase().startsWith(val);
-        Array.from(o.el.children).forEach(c => c.hidden = hide);
+        Array.from(o.el.children).forEach(c => (c.hidden = hide));
       }
     });
   }
