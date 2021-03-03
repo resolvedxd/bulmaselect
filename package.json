@@ -27,7 +27,7 @@
   ],
   "scripts": {
     "format": "cross-env prettier --config .prettierrc 'src/**/*.{js,json,ts,tsx}' --write",
-    "prepublishOnly": "terser --compress --mangle --output dist/bulmaselect.min.js src/index.js",
+    "prepublishOnly": "cross-env mkdir dist && terser --compress --mangle --output dist/bulmaselect.min.js src/index.js",
     "lint": "eslint --fix .",
     "test": "eslint ."
   },
