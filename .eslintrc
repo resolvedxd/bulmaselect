@@ -65,55 +65,5 @@
         "allowSeparatedGroups": false
       }
     ]
-  },
-
-  // Typescript overrides
-  "overrides": [
-    {
-      "files": ["*.ts", "*.tsx"],
-      "parser": "@typescript-eslint/parser",
-      "plugins": ["@typescript-eslint", "prettier"],
-      "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended",
-        "prettier"
-      ],
-
-      // Enable if you need jsx support
-      // "parserOptions": {
-      // "ecmaFeatures": { "jsx": true }
-      // },
-
-      "rules": {
-        "semi": "off",
-        "@typescript-eslint/no-unused-vars": "error",
-        "@typescript-eslint/member-delimiter-style": "error",
-        "@typescript-eslint/member-ordering": "error",
-        "@typescript-eslint/type-annotation-spacing": "error",
-        "@typescript-eslint/semi": [1, "always"],
-        "@typescript-eslint/no-explicit-any": 0,
-        "@typescript-eslint/no-var-requires": 0,
-        "@typescript-eslint/explicit-module-boundary-types": "off",
-        "@typescript-eslint/ban-ts-comment": "off",
-        "@typescript-eslint/no-empty-function": "off",
-        "@typescript-eslint/naming-convention": [
-          "warn",
-          { "selector": "default", "format": ["camelCase"] },
-          { "selector": "variableLike", "format": ["camelCase"] },
-          { "selector": "variable", "format": ["camelCase", "UPPER_CASE", "PascalCase"] },
-          { "selector": "parameter", "format": ["camelCase"], "leadingUnderscore": "allow" },
-          { "selector": "memberLike", "format": ["camelCase"] },
-          { "selector": "memberLike", "modifiers": ["private"], "format": ["camelCase"], "leadingUnderscore": "require" },
-          { "selector": "typeLike", "format": null },
-          { "selector": "typeAlias", "format": null },
-          { "selector": "typeProperty", "format": null },
-          { "selector": "typeParameter", "format": ["PascalCase"], "prefix": ["T"] },
-          { "selector": "interface", "format": ["PascalCase"], "custom": { "regex": "^I[A-Z]", "match": false } },
-          { "selector": "objectLiteralProperty", "format": null },
-          { "selector": "enumMember", "format": ["UPPER_CASE"] }
-        ]
-      }
-    }
-  ]
+  }
 }
