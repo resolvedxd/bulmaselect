@@ -26,9 +26,8 @@
     "multiselections"
   ],
   "scripts": {
-    "build": "terser --compress --mangle --output dist/bulmaselect.min.js src/index.js",
     "format": "cross-env prettier --config .prettierrc 'src/**/*.{js,json,ts,tsx}' --write",
-    "deploy": "npm run format && npm run lint && npm run build && npm version patch --force && git push && npm publish",
+    "prepublishOnly": "terser --compress --mangle --output dist/bulmaselect.min.js src/index.js",
     "lint": "eslint --fix .",
     "test": "eslint ."
   },
