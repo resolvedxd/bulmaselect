@@ -1,4 +1,5 @@
-.editorconfig
 .eslintrc
 .gitattributes
-.jsbeautifyrc
+.gitignore
+.github/*
+.prettierrc
