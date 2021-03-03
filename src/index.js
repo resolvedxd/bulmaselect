@@ -1,3 +1,10 @@
+/**
+ * @file Bulmaselect
+ * @author resolved <resolvedxd@gmail.com>
+ * @author Espi <espi@riseup.net>
+ * @license MIT
+ */
+
 "use strict";
 
 const englishLocale = {
@@ -43,9 +50,7 @@ class Bulmaselect {
     config.options = config.options.map((opt) => {
       if (typeof opt === "string") return { label: opt };
       else if (opt.type === "group") {
-        opt.children = opt.children.map((child) =>
-          typeof child === "string" ? { label: child } : child
-        );
+        opt.children = opt.children.map((child) => (typeof child === "string" ? { label: child } : child));
         return opt;
       } else {
         return opt;
@@ -143,8 +148,7 @@ class Bulmaselect {
           Object.defineProperty(config.options[i].children[i_], "state", {
             get: () => checkbox.checked,
             set: (s) => {
-              if (typeof s !== "boolean")
-                throw new Error("You can't set this property to a non-boolean");
+              if (typeof s !== "boolean") throw new Error("You can't set this property to a non-boolean");
               checkbox.checked = s;
               this.updateButton();
             },
@@ -159,11 +163,9 @@ class Bulmaselect {
 
         // Gets option's state
         Object.defineProperty(config.options[i], "state", {
-          get: () =>
-            !config.options[i].children.map((c) => c.state).includes(false),
+          get: () => !config.options[i].children.map((c) => c.state).includes(false),
           set: (s) => {
-            if (typeof s !== "boolean")
-              throw new Error("You can't set this property to a non-boolean");
+            if (typeof s !== "boolean") throw new Error("You can't set this property to a non-boolean");
             config.options[i].children.forEach((c) => (c.state = s));
             checkbox.checked = s;
             this.updateButton();
@@ -181,8 +183,7 @@ class Bulmaselect {
         Object.defineProperty(config.options[i], "state", {
           get: () => checkbox.checked,
           set: (s) => {
-            if (typeof s !== "boolean")
-              throw new Error("You can't set this property to a non-boolean");
+            if (typeof s !== "boolean") throw new Error("You can't set this property to a non-boolean");
             checkbox.checked = s;
             this.updateButton();
           },
@@ -211,18 +212,11 @@ class Bulmaselect {
 
     // Maps the options and pushes them
     this.options
-      .map((c) =>
-        Object.create(
-          Object.getPrototypeOf(c),
-          Object.getOwnPropertyDescriptors(c)
-        )
-      )
+      .map((c) => Object.create(Object.getPrototypeOf(c), Object.getOwnPropertyDescriptors(c)))
       .forEach((opt) => {
         if (opt.type === "group") {
           const selectedChildren = [];
-          opt.children.forEach(
-            (child) => child.state && selectedChildren.push(child)
-          );
+          opt.children.forEach((child) => child.state && selectedChildren.push(child));
           if (selectedChildren.length) {
             opt.children = selectedChildren;
             selected.push(opt);
@@ -245,15 +239,12 @@ class Bulmaselect {
     });
 
     // Updates the innerText
-    if (!selected.length)
-      this.button.innerText = this.config.locale.btnNoSelection;
+    if (!selected.length) this.button.innerText = this.config.locale.btnNoSelection;
     else
       this.button.innerText = `${selected
         .slice(0, this.config.btnMaxLabels)
         .map((s) => s.label)
-        .join(this.config.btnDelimiter)}${
-        selected.length > this.config.btnMaxLabels ? "..." : ""
-      }`;
+        .join(this.config.btnDelimiter)}${selected.length > this.config.btnMaxLabels ? "..." : ""}`;
   }
 
   // Updates selections

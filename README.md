@@ -1,11 +1,13 @@
 # bulmaselect
-[![License](https://img.shields.io/npm/l/bulmaselect)][LICENSE]
-[![Downloads](https://img.shields.io/npm/dw/bulmaselect)][PACKAGE]
-[![Bundle Size](https://img.shields.io/bundlephobia/min/bulmaselect)][PACKAGE]
-[![Version](https://img.shields.io/npm/v/bulmaselect?color=orange)][PACKAGE]
+
+[![License](https://img.shields.io/npm/l/bulmaselect)][license]
+[![Downloads](https://img.shields.io/npm/dw/bulmaselect)][package]
+[![Bundle Size](https://img.shields.io/bundlephobia/min/bulmaselect)][package]
+[![Version](https://img.shields.io/npm/v/bulmaselect?color=orange)][package]
 
 ## About
-Bulmaselect is a fast multiselect library for the web written in vanilla JavaScript. While styled like [Bulma][BULMA], it can work anywhere and has a variety of options to choose from.
+
+Bulmaselect is a fast multiselect library for the web written in vanilla JavaScript. While styled like [Bulma][bulma], it can work anywhere and has a variety of options to choose from.
 
 ## Example
 
@@ -50,9 +52,10 @@ let ms = new Bulmaselect("ms", config)
 ```
 
 ## License
-[MIT][LICENSE]
 
-[BULMA]: https://bulma.io "Bulma"
-[CHANGELOG]: CHANGELOG.md "Changelog File"
-[PACKAGE]: https://www.npmjs.com/package/bulmaselect "Bulmaselect Package"
-[LICENSE]: LICENSE "MIT License"
+[MIT][license]
+
+[bulma]: https://bulma.io "Bulma"
+[changelog]: CHANGELOG.md "Changelog File"
+[package]: https://www.npmjs.com/package/bulmaselect "Bulmaselect Package"
+[license]: LICENSE "MIT License"
