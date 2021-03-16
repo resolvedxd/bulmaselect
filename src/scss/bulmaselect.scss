@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+/*
+* Bulmaselect CSS - https://github.com/resolvedxd/bulmaselect
+* Licensed under the MIT license - https://opensource.org/licenses/MIT
+* Copyright (c) 2021 resolved <resolvedxd@gmail.com> & sysdotini <espi@riseup.net>
+*/
+
+// TODO: Figure out how to do this with Bulma itself
+.bs-drop,
+.bs-select,
+.bs-button {
+  width: 300px;
+}
+
+.bs-drop {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

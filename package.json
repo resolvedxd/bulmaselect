@@ -1,14 +1,14 @@
 {
   "name": "bulmaselect",
-  "version": "1.0.13",
-  "description": "A fast Vanilla JavaScript multiselect library for the web.",
-  "author": "resolv <resolvedxd@gmail.com> (https://github.com/resolvedxd)",
+  "version": "2.0.0-alpha",
+  "description": "A mutliselect library styled to fit Bulma.",
+  "author": "resolved <resolvedxd@gmail.com> (https://github.com/resolvedxd)",
   "contributors": [
-    "Espi <espi@riseup.net> (https://espi.me)"
+    "sysdotini <espi@riseup.net> (https://espi.me)"
   ],
   "license": "MIT",
   "homepage": "https://github.com/resolvedxd/bulmaselect",
-  "main": "dist/bulmaselect.min.js",
+  "main": "dist/index.js",
   "bugs": {
     "url": "https://github.com/resolvedxd/bulmaselect/issues"
   },
@@ -26,17 +26,30 @@
     "multiselections"
   ],
   "scripts": {
-    "format": "cross-env prettier --config .prettierrc 'src/**/*.{js,json,ts,tsx}' --write",
-    "prepublishOnly": "cross-env mkdir dist && terser --compress --mangle --output dist/bulmaselect.min.js src/index.js",
+    "build": "cross-env rollup -c",
+    "prepublish": "npm run build",
+    "postbuild": "npm run build:scss",
+    "build:tsc": "tsc",
+    "build:scss": "cross-env sass ./src/scss/:./dist/css/",
+    "dev": "cross-env rollup -w",
+    "dev:scss": "cross-env sass --watch ./src/scss:./src/css",
+    "format": "cross-env prettier --config .prettierrc 'src/**/*.{scss,js,ts,tsx}' --write",
     "lint": "eslint --fix .",
-    "test": "eslint ."
+    "publish": "npm publish",
+    "test": "tsc && eslint ."
   },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^8.2.0",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
     "cross-env": "^7.0.3",
-    "eslint": "^7.21.0",
+    "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
     "prettier": "^2.2.1",
-    "terser": "^5.6.0"
+    "rollup": "^2.41.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.32.8",
+    "typescript": "^4.2.3"
   }
 }
