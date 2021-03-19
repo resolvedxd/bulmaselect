@@ -7,9 +7,11 @@
 
 ## About
 
-Bulmaselect is a fast multiselect library for the web written in vanilla JavaScript. While styled like [Bulma][bulma], it can work anywhere and has a variety of options to choose from.
+Bulmaselect is a multiselect library written in TypeScript styled to fit [Bulma][bulma]. It relies on Bulma for styling, and is meant to be lightweight and fast on its own.
 
 ## Example
+
+For a list of configurable options, see our [typings](https://github.com/resolvedxd/bulmaselect/blob/master/src/typings/index.d.ts#L11).
 
 ```HTML
 <!DOCTYPE html>
@@ -20,27 +22,30 @@ Bulmaselect is a fast multiselect library for the web written in vanilla JavaScr
   <div id="ms"></div>
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/bulmaselect@latest/dist/bulmaselect.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bulmaselect@latest/dist/index.js"></script>
 
 <script>
 
-// Locale options used for strings
-const englishLocale = {
-  btnNoSelection: "Nothing selected", // When no items are selected
-  searchPlaceholder: "Search", // The placeholder text in the search bar
-}
+// Options to pass to the multiselect
 
-// List of options. These are the current defaults. Only specify what you want to differ from the default.
 const config = {
-  isOpen: false, // Whether to open the dropdown by default. Defaults to false.
-  keepOpen: false, // Whether to keep the dropdown open on clickoff. Defaults to false.
-  keepOpenClickoff: false, // Set this to true if you want to keep the menu open on clickoff
-  injectStyle: true, // Whether to inject the default CSS. Defaults to true.
-  btnMaxLabels: 3, // The max labels to show on the button before elipsing text. Defaults to 3.
-  btnDelimiter: ",", // The delimiter (i.e ,) between labels on the button. Defaults to `, `.
-  searchEnable: false, // Whether to show the searchbar or not. Defaults to false.
-  locale: englishLocale, // The locale option object, configured above. Defaults to English.
-  options: ["a", "b", "c"], // The actual data to send to the select. Put your array of objects here. Needed.
+  options: [
+    { label: "testLabel1" },
+    { label: "testLabel2" },
+    { label: "testLabel3" },
+    {
+      label: "groupTest",
+      type: "group",
+      children: [
+        {
+          label: "childLabel1",
+        },
+        {
+          label: "childLabel2",
+        },
+      ],
+    },
+  ],
 };
 
 // Creates a multiselect with your options.
@@ -56,6 +61,5 @@ let ms = new Bulmaselect("ms", config)
 [MIT][license]
 
 [bulma]: https://bulma.io "Bulma"
-[changelog]: CHANGELOG.md "Changelog File"
 [package]: https://www.npmjs.com/package/bulmaselect "Bulmaselect Package"
 [license]: LICENSE "MIT License"
