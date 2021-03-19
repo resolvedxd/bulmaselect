@@ -1,0 +1,12 @@
+.eslintrc
+.gitattributes
+.gitignore
+.prettierrc
+package-lock.json
+README.md
+rollup.config.js
+tsconfig.json
+.github/
+test/
+src/index.ts
+
