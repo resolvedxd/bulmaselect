@@ -6,7 +6,7 @@
  */
 
 // Bulmaselect classnames
-interface BulmaselectClassNames {
+export interface BulmaselectClassNames {
   button?: string;
   dropdown?: string;
   multiSelect?: string;
@@ -31,7 +31,7 @@ interface BulmaselectClassNames {
 }
 
 // Bulmaselect values
-interface BulmaselectValues {
+export interface BulmaselectValues {
   state?: any;
   label?: string;
   type?: "group";
@@ -42,7 +42,7 @@ interface BulmaselectValues {
 }
 
 // Bulmaselect options
-interface BulmaselectOptions {
+export interface BulmaselectOptions {
   locale?: BulmaselectLocale;
   options?: BulmaselectValues[];
   isOpen?: boolean;
@@ -56,7 +56,7 @@ interface BulmaselectOptions {
 }
 
 // Locale type
-interface BulmaselectLocale {
+export interface BulmaselectLocale {
   btnNoSelection?: string;
   searchPlaceholder?: string;
 }
