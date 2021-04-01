@@ -10,7 +10,6 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "importsNotUsedAsValues": "error",
-    // "incremental": true,
     "inlineSources": true,
     "lib": ["DOM", "es2020"],
     "module": "ES2015",

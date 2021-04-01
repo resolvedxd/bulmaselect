@@ -12,6 +12,7 @@ $bulmaselect-black: #000; // Equivalent to bulma $black
 $bulmaselect-light-text: #363636; // Equivalent to bulma is-dark
 $bulmaselect-light-border: #ccc; // Equivalent to bulma is-light
 $bulmaselect-black-border: #17181c;
+$bulmaselect-black-text: #c9c9c9;
 $bulmaselect-width: 300px;
 $bulmaselect-height: 300px;
 $bulmaselect-max-width: 300px;
@@ -40,7 +41,7 @@ $bulmaselect-border-radius: 4px;
 
 // Dropdown
 .bs-drop {
-  background-color: #fff;
+  background-color: $bulmaselect-white;
   position: absolute;
   color: $bulmaselect-light-text;
   width: $bulmaselect-width;
@@ -63,7 +64,7 @@ $bulmaselect-border-radius: 4px;
   .bs-group-label,
   .bs-ul {
     background-color: $bulmaselect-black;
-    color: $bulmaselect-white;
+    color: $bulmaselect-black-text;
   }
 
   .bs-drop {

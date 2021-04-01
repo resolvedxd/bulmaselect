@@ -220,7 +220,7 @@ export default class Bulmaselect {
           Object.defineProperty(this.config.options[i], "state", {
             get: () => !this.config.options[i].children.map((child) => child.state).includes(false),
             set: (s) => {
-              if (typeof s !== "boolean") throw new Error("You can't set this property to a non-boolean");
+              if (typeof s !== "boolean") throw new Error("This property cannot be set to a non-boolean.");
               this.config.options[i].children.forEach((child) => (child.state = s));
               checkbox.checked = s;
               this.updateButton();
