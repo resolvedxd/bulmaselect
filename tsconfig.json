@@ -31,7 +31,6 @@
     "strictBindCallApply": true,
     "strictNullChecks": false,
     "suppressImplicitAnyIndexErrors": true,
-    "typeRoots": ["./src/typings"],
     "target": "ES2015"
   },
   "exclude": ["node_modules"],

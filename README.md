@@ -11,8 +11,6 @@ Bulmaselect is a multiselect library written in TypeScript styled to fit [Bulma]
 
 ## Example
 
-For a list of configurable options, see our [typings](https://github.com/resolvedxd/bulmaselect/blob/master/src/typings/index.d.ts#L11).
-
 ```HTML
 <!DOCTYPE html>
 

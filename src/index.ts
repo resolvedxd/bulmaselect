@@ -5,6 +5,62 @@
  * @license MIT
  */
 
+// Bulmaselect classnames
+interface BulmaselectClassNames {
+  button?: string;
+  dropdown?: string;
+  multiSelect?: string;
+  itemUL?: string;
+  itemSpan?: string;
+  itemCheckbox?: string;
+  itemGroup?: string;
+  groupLabel?: string;
+  itemLabel?: string;
+  textBox?: string;
+  bulmaButton?: string;
+  bulmaBold?: string;
+  bulmaInput?: string;
+  bulmaSmall?: string;
+  bulmaHidden?: string;
+  bulmaMarginLeft?: string;
+  bulmaBlock?: string;
+  bulmaCheckbox?: string;
+  bulmaJustify?: string;
+  bulmaTextLeft?: string;
+  select?: string;
+}
+
+// Bulmaselect values
+interface BulmaselectValues {
+  state?: any;
+  label?: string;
+  type?: "group";
+  id?: string;
+  checkbox?: HTMLInputElement;
+  el?: HTMLLabelElement;
+  children?: BulmaselectValues[];
+}
+
+// Bulmaselect options
+interface BulmaselectOptions {
+  locale?: BulmaselectLocale;
+  options?: BulmaselectValues[];
+  isOpen?: boolean;
+  keepOpen?: boolean;
+  keepOpenClickoff?: boolean;
+  searchEnable?: boolean;
+  searchAutoFocus?: boolean;
+  btnMaxLabels?: number;
+  btnDelimiter?: string;
+  classNames?: BulmaselectClassNames;
+}
+
+// Locale type
+interface BulmaselectLocale {
+  btnNoSelection?: string;
+  searchPlaceholder?: string;
+}
+
 // Default locale
 const englishLocale: BulmaselectLocale = {
   btnNoSelection: "Nothing selected",
