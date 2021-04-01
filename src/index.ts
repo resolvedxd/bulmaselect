@@ -23,6 +23,7 @@ const defaultConfig: BulmaselectOptions = {
   locale: englishLocale,
   options: [],
   classNames: {
+    select: "select",
     button: "bs-button",
     dropdown: "bs-drop",
     itemUL: "bs-ul",
@@ -32,6 +33,7 @@ const defaultConfig: BulmaselectOptions = {
     groupLabel: "bs-group-label",
     itemLabel: "bs-label",
     textBox: "bs-textbox",
+    bulmaTextLeft: "has-text-left",
     bulmaButton: "button",
     bulmaBold: "has-text-weight-bold",
     bulmaInput: "input",
@@ -40,7 +42,6 @@ const defaultConfig: BulmaselectOptions = {
     bulmaMarginLeft: "ml-1",
     bulmaBlock: "is-block",
     bulmaCheckbox: "checkbox",
-    bulmaBackground: "has-background-white",
     bulmaJustify: "is-justify-content-left",
   },
 };
@@ -65,6 +66,19 @@ export default class Bulmaselect {
     if (typeof parentElement === "string") parent = document.getElementById(parentElement);
     else if (parentElement instanceof Element) parent = parentElement;
     if (!parent) throw new Error("No parent element was provided.");
+
+    // Select element
+    if (parent.nodeName === "SELECT") {
+      config.options = [];
+      Array.from(parent.children).forEach((c: any) => {
+        if (c.innerText && c.id) config.options.push({ label: c.innerText, id: c.id });
+        else if (c.innerText) config.options.push(c.innerText);
+      });
+
+      const div = document.createElement("div");
+      parent.parentNode.replaceChild(div, parent);
+      parent = div;
+    }
 
     // Gets the config options
     this.config = { ...defaultConfig, ...config };
@@ -92,12 +106,12 @@ export default class Bulmaselect {
 
     // Creates the parent button
     const button = document.createElement("button");
-    button.classList.value = `${this.config.classNames.button} ${this.config.classNames.bulmaButton} ${this.config.classNames.bulmaJustify}`;
+    button.classList.value = `${this.config.classNames.select} ${this.config.classNames.bulmaTextLeft} ${this.config.classNames.button} ${this.config.classNames.bulmaButton} ${this.config.classNames.bulmaJustify}`;
     wrapperDiv.appendChild(button);
 
     // Creates the individual list divs
     const ulDiv = document.createElement("div");
-    ulDiv.classList.value = `${this.config.classNames.dropdown} ${this.config.classNames.bulmaBackground}`;
+    ulDiv.classList.value = `${this.config.classNames.dropdown}`;
 
     // Hides the element if isOpen & keepOpen are both false
     ulDiv.hidden = !this.config.isOpen && !this.config.keepOpen;
@@ -166,7 +180,7 @@ export default class Bulmaselect {
       checkbox.classList.value = `${this.config.classNames.itemCheckbox} ${this.config.classNames.bulmaCheckbox}`;
       label.appendChild(checkbox);
 
-      //  Handles item selection/deselections
+      // Handles item selection/deselections
       switch (option.type) {
         // Handles groups and their selection
         case "group": {
@@ -215,7 +229,7 @@ export default class Bulmaselect {
 
           // List of classes used
           span.classList.value = `${this.config.classNames.itemSpan} ${this.config.classNames.itemGroup} ${this.config.classNames.bulmaBold} ${this.config.classNames.bulmaMarginLeft}`;
-          label.classList.value = checkbox.classList + ` ${this.config.classNames.groupLabel}`;
+          label.classList.value = ` ${this.config.classNames.groupLabel} ${this.config.classNames.bulmaBlock}`;
 
           // Listens for input on the checkbox
           checkbox.addEventListener("click", () => {
@@ -326,12 +340,11 @@ export default class Bulmaselect {
       if (option.type === "group") {
         option.children.forEach((child) => {
           // Finds out whether or not we should hide the element
-          const hide = !child.label.toLowerCase().startsWith(val);
+          const hide = !child.label.toLowerCase().includes(val);
 
           // Sets "hidden" = true
           Array.from(child.el.children).forEach((c) => ((c as HTMLElement).hidden = hide));
           child.el.hidden = hide;
-          console.log(child.checkbox);
           // Adds the bulma hidden class to hide the checkbox
           hide ? child.checkbox.classList.add(hiddenClass) : child.checkbox.classList.remove(hiddenClass);
         });
@@ -341,7 +354,7 @@ export default class Bulmaselect {
         Array.from(option.el.children).forEach((c) => ((c as HTMLElement).hidden = !hide));
       } else {
         // Hides individual elements
-        const hide = !option.label.toLowerCase().startsWith(val);
+        const hide = !option.label.toLowerCase().includes(val);
         Array.from(option.el.children).forEach((c) => ((c as HTMLElement).hidden = hide));
         hide ? option.checkbox.classList.add(hiddenClass) : option.checkbox.classList.remove(hiddenClass);
       }

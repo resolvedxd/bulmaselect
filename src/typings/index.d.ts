@@ -133,6 +133,7 @@ interface BulmaselectClassNames {
   bulmaMarginLeft?: string;
   bulmaBlock?: string;
   bulmaCheckbox?: string;
-  bulmaBackground?: string;
   bulmaJustify?: string;
+  bulmaTextLeft?: string;
+  select?: string;
 }

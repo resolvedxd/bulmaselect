@@ -6,15 +6,67 @@
 * Copyright (c) 2021 resolved <resolvedxd@gmail.com> & sysdotini <espi@riseup.net>
 */
 
-// TODO: Figure out how to do this with Bulma itself
+// Bulmaselect SASS variables
+$bulmaselect-white: #fff; // Equivalent to bulma $white
+$bulmaselect-black: #000; // Equivalent to bulma $black
+$bulmaselect-light-text: #363636; // Equivalent to bulma is-dark
+$bulmaselect-light-border: #ccc; // Equivalent to bulma is-light
+$bulmaselect-black-border: #17181c;
+$bulmaselect-width: 300px;
+$bulmaselect-height: 300px;
+$bulmaselect-max-width: 300px;
+$bulmaselect-max-height: 300px;
+$bulmaselect-border-radius: 4px;
+
+// Sizes
 .bs-drop,
 .bs-select,
 .bs-button {
-  width: 300px;
+  width: $bulmaselect-width;
 }
 
+// List of items
+.bs-ul {
+  list-style-type: none;
+  margin-left: 5px !important;
+  margin-top: 3px !important;
+  margin-bottom: 3px;
+}
+
+// Button
+.bs-button {
+  z-index: 55;
+}
+
+// Dropdown
 .bs-drop {
+  background-color: #fff;
+  position: absolute;
+  color: $bulmaselect-light-text;
+  width: $bulmaselect-width;
+  height: $bulmaselect-height;
+  max-width: $bulmaselect-max-width;
+  max-height: $bulmaselect-max-height;
+  overflow: auto !important;
+  z-index: 55;
+  border: 1px solid $bulmaselect-light-border;
+  border-radius: $bulmaselect-border-radius;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+// Dark theme overrides
+@media (prefers-color-scheme: dark) {
+  .bs-drop,
+  .bs-label,
+  .bs-group-label,
+  .bs-ul {
+    background-color: $bulmaselect-black;
+    color: $bulmaselect-white;
+  }
+
+  .bs-drop {
+    border: 1px solid $bulmaselect-black-border;
+  }
 }
