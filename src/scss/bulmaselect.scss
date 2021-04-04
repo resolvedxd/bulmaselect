@@ -18,6 +18,7 @@ $bulmaselect-height: 300px;
 $bulmaselect-max-width: 300px;
 $bulmaselect-max-height: 300px;
 $bulmaselect-border-radius: 4px;
+$bulmaselect-z-index: 20;
 
 // Sizes
 .bs-drop,
@@ -36,7 +37,7 @@ $bulmaselect-border-radius: 4px;
 
 // Button
 .bs-button {
-  z-index: 55;
+  z-index: $bulmaselect-z-index;
 }
 
 // Dropdown
@@ -49,7 +50,7 @@ $bulmaselect-border-radius: 4px;
   max-width: $bulmaselect-max-width;
   max-height: $bulmaselect-max-height;
   overflow: auto !important;
-  z-index: 55;
+  z-index: $bulmaselect-z-index;
   border: 1px solid $bulmaselect-light-border;
   border-radius: $bulmaselect-border-radius;
   white-space: nowrap;
