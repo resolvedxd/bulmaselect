@@ -1,6 +1,6 @@
 {
   "name": "bulmaselect",
-  "version": "2.0.5",
+  "version": "2.0.7",
   "description": "A mutliselect library styled to fit Bulma.",
   "author": "resolved <resolvedxd@gmail.com> (https://github.com/resolvedxd)",
   "contributors": [
@@ -40,8 +40,8 @@
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.2.1",
-    "@typescript-eslint/eslint-plugin": "^4.20.0",
-    "@typescript-eslint/parser": "^4.20.0",
+    "@typescript-eslint/eslint-plugin": "^4.21.0",
+    "@typescript-eslint/parser": "^4.21.0",
     "cross-env": "^7.0.3",
     "eslint": "^7.23.0",
     "eslint-config-prettier": "^8.1.0",
