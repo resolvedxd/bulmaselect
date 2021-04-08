@@ -7,7 +7,6 @@ export default {
     format: "umd",
     name: "Bulmaselect",
     dir: "./dist/",
-    sourcemap: false,
   },
 
   plugins: [
