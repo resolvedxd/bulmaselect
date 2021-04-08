@@ -7,12 +7,15 @@ export default {
     format: "umd",
     name: "Bulmaselect",
     dir: "./dist/",
-    sourcemap: true,
+    sourcemap: false,
   },
 
   plugins: [
     typescript(),
     terser({
+      format: {
+        source_map: false,
+      },
       mangle: true,
       compress: true,
       ecma: true,
